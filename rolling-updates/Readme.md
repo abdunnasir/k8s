@@ -11,7 +11,7 @@ The above command gave INTERNAL-IP as  172.24.0.3
 
 ​```
 kubectl get svc
-```
+​```
 gave an out put
 nginx-service   NodePort    10.96.169.150   <none>        80:31118/TCP   22m
 So the IP to be used is
