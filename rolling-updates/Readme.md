@@ -1,15 +1,26 @@
-Service expose the deploymnet to the an IP.
+#Explanation of the yaml file and commands
+
+##### How to get public IP to show nginx default page
+**Service expose the deploymnet to the an IP.**
+​```bash
 kubectl get nodes -o wide
+​```
+
 The above command gave INTERNAL-IP as  172.24.0.3
+​```bash
 kubectl get svc
+```
 gave an out put
 nginx-service   NodePort    10.96.169.150   <none>        80:31118/TCP   22m
 So the IP to be used is
 31118
 So took http://172.24.0.3:31118/ in browser
 
+```bash
 kubectl get pods -l app=nginx
+```
 It lists the pods under the label app=nginx
-
+```bash
 kubectl get pods --watch
+```
 The above command printed the chnages during the deployment
