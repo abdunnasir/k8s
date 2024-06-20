@@ -48,3 +48,5 @@ nginx-service       NodePort    10.96.166.131   <none>        30020:30020/TCP   
 
 
 So we can take http://172.24.0.2:30020/ on a browser
+
+# Ingress Resource
