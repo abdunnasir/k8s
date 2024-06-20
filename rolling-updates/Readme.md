@@ -2,12 +2,14 @@
 
 ##### How to get public IP to show nginx default page
 **Service expose the deploymnet to the an IP.**
-​```bash
+
+​```
 kubectl get nodes -o wide
 ​```
 
 The above command gave INTERNAL-IP as  172.24.0.3
-​```bash
+
+​```
 kubectl get svc
 ```
 gave an out put
