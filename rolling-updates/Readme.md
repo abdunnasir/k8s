@@ -12,7 +12,6 @@ The above command gave INTERNAL-IP as  172.24.0.3
 ​```
 kubectl get svc
 ​```
-> This is a blockquote.
 
 gave an out put
 nginx-service   NodePort    10.96.169.150   <none>        80:31118/TCP   22m
@@ -29,3 +28,16 @@ It lists the pods under the label app=nginx
 kubectl get pods --watch
 ```
 The above command printed the chnages during the deployment
+
+
+### Strategy:
+  ```
+  type: RollingUpdate  # Specify the update strategy
+  rollingUpdate:
+    maxSurge: 1    
+  ```
+
+- maxSurge: 1
+    - Allow one additional pod over the desired replica count during update
+- maxUnavailable: 1   
+    - Allow one pod to be unavailable during update
