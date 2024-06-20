@@ -18,11 +18,12 @@ So the IP to be used is
 31118
 So took http://172.24.0.3:31118/ in browser
 
-```bash
+```
 kubectl get pods -l app=nginx
 ```
 It lists the pods under the label app=nginx
-```bash
+
+```
 kubectl get pods --watch
 ```
 The above command printed the chnages during the deployment
