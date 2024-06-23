@@ -53,13 +53,13 @@ So we can take http://172.24.0.2:30020/ on a browser
 
 Ingress in Kubernetes is a resource that manages external access to services within a Kubernetes cluster, typically HTTP and HTTPS. Ingress allows you to define rules for routing traffic to different services based on the request's hostname, path, or other properties. This makes it easier to manage complex routing configurations and provides a more flexible way to expose multiple services.
 
-eg:  /  should be redirected to a service default-service
-/backend to a service named backend-service
-/test to a service named test-service
-then we can use the ingress as shown in the yaml file ingress.yaml
+eg:  /  should be redirected to a service default-service,<br/>
+/backend to a service named backend-service<br/>
+/test to a service named test-service<br/>
+then we can use the ingress as shown in the yaml file ingress.yaml<br/>
 
 
-See ingress-ssl.yaml to know how we can use ssl with Ingress.
+See ingress-ssl.yaml to know how we can use ssl with Ingress.<br/>
 
 ```
  tls:
