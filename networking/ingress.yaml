@@ -1,86 +1,28 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: apache2-deployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: apache2
-  template:
-    metadata:
-      labels:
-        app: apache2
-    spec:
-      containers:
-        - name: apache2
-          image: httpd:latest
-          ports:
-            - containerPort: 80
----
 apiVersion: v1
 kind: Service
 metadata:
   name: default-service
 spec:
   selector:
-    app: apache2
+    app: default
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-        - name: nginx
-          image: nginx:latest
-          ports:
-            - containerPort: 443
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend
+  name: backend-service
 spec:
   selector:
-    app: nginx
+    app: backend
   ports:
     - protocol: TCP
       port: 443
       targetPort: 443
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: tomcat-deployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: tomcat
-  template:
-    metadata:
-      labels:
-        app: tomcat
-    spec:
-      containers:
-        - name: tomcat
-          image: tomcat:latest
-          ports:
-            - containerPort: 8000
+
 ---
 apiVersion: v1
 kind: Service
@@ -88,19 +30,22 @@ metadata:
   name: test-service
 spec:
   selector:
-    app: tomcat
+    app: test
   ports:
     - protocol: TCP
       port: 8000
       targetPort: 8000
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress
+  name: website-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: myapp.com  # Replace with your domain or use Minikube IP for testing
+    - host: website.com
       http:
         paths:
           - path: /
@@ -114,7 +59,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: backend
+                name: backend-service
                 port:
                   number: 443
           - path: /test
