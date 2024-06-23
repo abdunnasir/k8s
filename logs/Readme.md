@@ -1,4 +1,4 @@
-# Common log check commnds and tricks
+# Common log check commands
 
 ### Get the status of major components
 ```
