@@ -18,8 +18,19 @@ Which command will list events in namespace prod and sort them by timestamp?
 kubectl get events --sort-by='.metadata.creationTimestamp' --namespace prod
 
 
-Which command(s) should be used to capture all the cluster information for debugging in a file name /var/logs/test-cluster.log? 
+Which command(s) should be used to capture all the cluster information for debugging in a file name /var/logs/test-cluster.log?
 kubectl cluster-info dump --output-directory=test.log
 
 
 
+### Kind
+
+How to create a cluster named kind-2?
+```
+kind create cluster --name kind-2
+```
+
+How to delete a cluster named kind-2
+```
+kind delete clusters kind-2
+```
