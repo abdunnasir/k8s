@@ -82,6 +82,7 @@ First list the replica set by running
 ```
 kubectl get replicasets -l app=nginx
 ```
+
 NAME                         DESIRED   CURRENT   READY   AGE
 nginx-deployment-576c6b7b6   3         3         3       5m24s
 
