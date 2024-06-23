@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-specific-env
+spec:
+  containers:
+    - name: my-env-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      env:
+        - name: Variable1
+          value: "somevalue"
+        - name: Variable2
+          value: "someothervalue"

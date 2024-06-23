@@ -123,3 +123,18 @@ After that, from the container run
 echo $DB_USERNAME
 ```
 That will show  `dbuser`
+
+#### Pass env values to a pod
+See the yaml file
+pass-env.yaml
+
+We can easily pass them to a pod using
+
+```
+env:
+    - name: Variable1
+      value: "somevalue"
+    - name: Variable2
+      value: "someothervalue"
+```
+Then from the pod we can print it like echo $Variable1, echo $Variable2
