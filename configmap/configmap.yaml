@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: testapp-container
-          image: nginx:latest  # Replace with your application image
+          image: nginx:latest
           ports:
             - containerPort: 80
           env:

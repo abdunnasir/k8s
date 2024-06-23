@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+        - name: testapp-container
+          image: nginx:latest  
+          ports:
+            - containerPort: 80
+          env:
+            - name: HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: cmap-from-file-host
+                  key: host.txt
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: cmap-from-file-port
+                  key: port.txt

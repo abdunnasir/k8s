@@ -37,3 +37,51 @@ Multi-line Content: Each line after the pipe is part of the value for the key ap
     app.version=1.0
     app.env=production
 ```
+
+You can also use config map from a file
+First create two files, named host.txt and port.txt
+in a folder temp
+
+Then run
+```
+kubectl create configmap cmap-from-file-host --from-file=temp/host.txt
+kubectl create configmap cmap-from-file-port --from-file=temp/port.txt
+```
+
+Then you can check weather they are created using the command
+```
+kubectl get configmap cmap-from-file-host
+kubectl get configmap cmap-from-file-port
+```
+
+Yaml file of them can be seen by
+
+```
+kubectl get configmap cmap-from-file-host -o yaml
+kubectl get configmap cmap-from-file-port -o yaml
+```
+
+You will see yaml like
+```
+apiVersion: v1
+data:
+  host.txt: |
+    http://localhost
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-06-23T06:49:30Z"
+  name: cmap-from-file-host
+  namespace: default
+  resourceVersion: "352"
+  uid: 12ae001f-eab1-46c3-b5ae-f90f2f9efd77
+```
+
+So the config map is created with the key host.txt,
+same as the file name.
+
+```
+data:
+  host.txt: |
+```
+See the file configmap-from-file.yaml, to see how the
+config map is used in it.
