@@ -38,6 +38,8 @@ Multi-line Content: Each line after the pipe is part of the value for the key ap
     app.env=production
 ```
 
+#### config map from a file.
+
 You can also use config map from a file
 First create two files, named host.txt and port.txt
 in a folder temp
@@ -85,3 +87,29 @@ data:
 ```
 See the file configmap-from-file.yaml, to see how the
 config map is used in it.
+
+#### Secret from cli
+
+We can create two secret from cli as shown below
+
+```
+kubectl create secret generic db-credentials --from-literal=db-username=dbuser --from-literal=db-password=mypass
+```
+
+Then if you check the yaml file by running
+
+```
+kubectl get secret db-credentials -o yaml
+```
+
+You will get out put like
+
+```
+apiVersion: v1
+data:
+  db-password: bXlwYXNz
+  db-username: ZGJ1c2Vy
+kind: Secret
+```
+
+Then see secret-from-cli.yaml, how it's used in a pod
