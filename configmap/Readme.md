@@ -27,3 +27,13 @@ echo $APP_NAME
 echo $DB_USERNAME
 echo $DB_PASSWORD
 ```
+#### Significance of | (pipe)
+In the below example ,
+Pipe (|): Indicates that the value is a block scalar, preserving the newlines and formatting.
+Multi-line Content: Each line after the pipe is part of the value for the key app.properties.
+```
+  app.properties: |
+    app.name=Test App
+    app.version=1.0
+    app.env=production
+```
