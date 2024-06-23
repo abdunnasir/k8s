@@ -112,4 +112,14 @@ data:
 kind: Secret
 ```
 
-Then see secret-from-cli.yaml, how it's used in a pod
+Then see secret-from-cli.yaml, how it's used in a pod.
+
+Then run
+```
+kubectl exec -it my-pod-new -- /bin/bash
+```
+After that, from the container run
+```
+echo $DB_USERNAME
+```
+That will show  `dbuser`
