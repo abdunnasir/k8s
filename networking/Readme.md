@@ -50,3 +50,22 @@ nginx-service       NodePort    10.96.166.131   <none>        30020:30020/TCP   
 So we can take http://172.24.0.2:30020/ on a browser
 
 # Ingress Resource
+
+Ingress in Kubernetes is a resource that manages external access to services within a Kubernetes cluster, typically HTTP and HTTPS. Ingress allows you to define rules for routing traffic to different services based on the request's hostname, path, or other properties. This makes it easier to manage complex routing configurations and provides a more flexible way to expose multiple services.
+
+eg:  /  should be redirected to a service default-service
+/backend to a service named backend-service
+/test to a service named test-service
+then we can use the ingress as shown in the yaml file ingress.yaml
+
+
+See ingress-ssl.yaml to know how we can use ssl with Ingress.
+
+```
+ tls:
+  - hosts:
+    - my-site.com
+    secretName: website-tls
+```
+
+This section is used to specify the certificate
